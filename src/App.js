@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
 import './App.css';
+import ApplicationSaleTableContainer from "./container/Application_sale_table_container/Application_sale_table_container";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="whole_container">
+      <Header />
+      <aside>
+        {/* Add your sidebar content here */}
+      </aside>
+      <div className="main_content">
+        <Routes>
+          <Route path="*" element={<ApplicationSaleTableContainer />} />
+        </Routes>
+      </div>
     </div>
   );
 }

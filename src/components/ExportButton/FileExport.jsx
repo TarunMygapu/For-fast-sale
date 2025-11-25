@@ -9,7 +9,7 @@ import {
 } from "./utils/exportUtils";
 
 const FileExport = ({ onExport, data = [], position = "middle" }) => {
-  const [selectedType, setSelectedType] = useState("Pdf");
+  const [selectedType, setSelectedType] = useState("");
   const fileTypes = ["Pdf", ".xls", "doc"];
 
   const handleSelect = (type) => {
@@ -77,3 +77,4 @@ const FileExport = ({ onExport, data = [], position = "middle" }) => {
 };
 
 export default FileExport;
+

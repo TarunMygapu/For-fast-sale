@@ -2,7 +2,7 @@
 .Application_Status_Table_application_status_table {
   width: 100%;
 }
-
+ 
 /* Status badge styles - these can be used by parent components */
 .Application_Status_Table_status_badge {
   display: inline-block;

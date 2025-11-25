@@ -13,7 +13,7 @@
   border-radius: 12px;
   padding: 10px;
   position: relative;
-  z-index: 999;
+  z-index: 999; /* Lower than header and nav tabs */
 }
 
 /* ---------- Typography ---------- */

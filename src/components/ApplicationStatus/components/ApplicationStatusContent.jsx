@@ -34,7 +34,7 @@ const ApplicationStatusContent = ({
   }
 
   // Always show the table when there's no search, pass filters to it
-  return (
+    return (
     <Application_sale_with_table 
       studentCategory={studentCategory}
       selectedCampus={selectedCampus}

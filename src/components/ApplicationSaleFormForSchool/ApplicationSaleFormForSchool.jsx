@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './SchoolApplicationSale.module.css';
+import './ApplicationSaleFormForSchool.module.css';
 
-const SchoolApplicationSale = () => {
+const ApplicationSaleFormForSchool = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const applicationData = location.state?.applicationData;
@@ -25,5 +25,5 @@ const SchoolApplicationSale = () => {
   );
 };
 
-export default SchoolApplicationSale;
+export default ApplicationSaleFormForSchool;
 

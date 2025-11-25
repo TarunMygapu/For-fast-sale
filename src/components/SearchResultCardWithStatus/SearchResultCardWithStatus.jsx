@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import styles from "./SearchResultCardWithStatus.module.css";
 import DivisionDesign from "../../assets/application-status/DivisionDesign.svg";
 import Statusbar from "../../widgets/StatusBar/Statusbar";
- 
+
 const SearchResultCardWithStatus = ({ data, maxResults = 5, onCardClick, category = 'school' }) => {
   // Permission check removed - always allow clicking
   const canClickCard = true;
   const [hoveredCard, setHoveredCard] = useState(null);
-  
+ 
   // Only enable hover menu for college category
   const isCollege = category?.toLowerCase()?.trim() === 'college';
 
@@ -58,33 +58,33 @@ const SearchResultCardWithStatus = ({ data, maxResults = 5, onCardClick, categor
                 {/* Card */}
                 <div
                   className={`${styles.Search_Cards_recent_search__card} ${isDisabled ? styles.disabled : ''} ${isHovered && isCollege ? styles.card_hovered : ''}`}
-                  onClick={() => !isDisabled && onCardClick && onCardClick(item)}
-                  style={{
-                    cursor: isDisabled ? 'not-allowed' : 'pointer',
-                    opacity: isDisabled ? 0.6 : 1
-                  }}
-                >
-                  <figure className={styles.Search_Cards_recent_search__image}></figure>
-                  <p className={styles.Search_Cards_recent_search__id}>
-                    {item.applicationNo}
-                  </p>
-                  <p className={styles.Search_Cards_recent_search__Campus}>
-                    {item.campus}
-                  </p>
-                  <p className={styles.Search_Cards_recent_search__Zone}>
-                    {item.zone}
-                  </p>
-                  <figure className={styles.Search_Cards_recent_search__division}>
-                    <img src={DivisionDesign} alt="Division Design Icon" />
-                  </figure>
-                  <div className={styles.Search_Cards_recent_search__status}>
-                    <Statusbar
-                      isSold={item.displayStatus === "Sold" || item.displayStatus === "Confirmed"}
-                      isConfirmed={item.displayStatus === "Confirmed"}
-                      isDamaged={item.displayStatus === "Damaged"}
-                      singleStar={item.displayStatus === "Damaged"}
-                    />
-                  </div>
+                onClick={() => !isDisabled && onCardClick && onCardClick(item)}
+                style={{
+                  cursor: isDisabled ? 'not-allowed' : 'pointer',
+                  opacity: isDisabled ? 0.6 : 1
+                }}
+              >
+              <figure className={styles.Search_Cards_recent_search__image}></figure>
+              <p className={styles.Search_Cards_recent_search__id}>
+                {item.applicationNo}
+              </p>
+              <p className={styles.Search_Cards_recent_search__Campus}>
+                {item.campus}
+              </p>
+              <p className={styles.Search_Cards_recent_search__Zone}>
+                {item.zone}
+              </p>
+              <figure className={styles.Search_Cards_recent_search__division}>
+                <img src={DivisionDesign} alt="Division Design Icon" />
+              </figure>
+              <div className={styles.Search_Cards_recent_search__status}>
+                <Statusbar
+                  isSold={item.displayStatus === "Sold" || item.displayStatus === "Confirmed"}
+                  isConfirmed={item.displayStatus === "Confirmed"}
+                  isDamaged={item.displayStatus === "Damaged"}
+                  singleStar={item.displayStatus === "Damaged"}
+                />
+              </div>
                 </div>
 
                 {/* Menu - only for college */}
@@ -117,7 +117,7 @@ const SearchResultCardWithStatus = ({ data, maxResults = 5, onCardClick, categor
                     </div>
                   </div>
                 )}
-              </div>
+            </div>
             );
           })
         ) : (

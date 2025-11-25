@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import GenericNavTabs from "../../widgets/GenericNavTab/GenericNavTabs";
 import ApplicationStatus from "../../components/ApplicationStatus/ApplicationStatus";
-import SchoolApplicationSale from "../../components/SchoolApplicationSale/SchoolApplicationSale";
+import ApplicationSaleFormForSchool from "../../components/ApplicationSaleFormForSchool/ApplicationSaleFormForSchool";
+import styles from "./MainContainer.module.css";
 
-const ApplicationSaleTableContainer = () => {
+const MainContainer = () => {
     // Define tabs for navigation
     const tabs = [
         { id: 1, label: "Analytics", path: "/analytics" },
@@ -14,7 +15,7 @@ const ApplicationSaleTableContainer = () => {
     ];
 
     return (
-        <div>
+        <div className={styles.main_container}>
             <GenericNavTabs tabs={tabs} />
             <Routes>
                 <Route path="/" element={<div>Default content</div>} />
@@ -22,10 +23,11 @@ const ApplicationSaleTableContainer = () => {
                 <Route path="/distribute" element={<div>Distribute content</div>} />
                 <Route path="/sale&confirm" element={<ApplicationStatus />} />
                 <Route path="/damage" element={<div>Damage content</div>} />
-                <Route path="/school-application-sale" element={<SchoolApplicationSale />} />
+                <Route path="/school-application-sale" element={<ApplicationSaleFormForSchool />} />
             </Routes>
         </div>
     );
 };
 
-export default ApplicationSaleTableContainer;
+export default MainContainer;
+

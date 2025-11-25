@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import './App.css';
-import ApplicationSaleTableContainer from "./container/Application_sale_table_container/Application_sale_table_container";
+import MainContainer from "./container/MainContainer/MainContainer";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       </aside>
       <div className="main_content">
         <Routes>
-          <Route path="*" element={<ApplicationSaleTableContainer />} />
+          <Route path="*" element={<MainContainer />} />
         </Routes>
       </div>
     </div>

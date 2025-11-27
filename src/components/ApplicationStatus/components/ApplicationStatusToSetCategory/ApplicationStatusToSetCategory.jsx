@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ApplicationStatus.module.css";
-import ApplicationStatusHeader from "./components/ApplicationStatusHeader";
-import ApplicationStatusContent from "./components/ApplicationStatusContent";
+import styles from "./ApplicationStatusToSetCategory.module.css";
+import ApplicationStatusHeader from "../ApplicationStatusHeader";
+import ApplicationStatusContent from "../ApplicationStatusContainerForTableAndCard";
 
 const ApplicationStatus = () => {
   const navigate = useNavigate();
@@ -188,22 +188,12 @@ const ApplicationStatus = () => {
 
   return (
     <div className={styles["application-status"]}>
-      {(showFilter || showExport) && (
-        <div
-          className={styles["application-status__overlay"]}
-          onClick={() => {
-            setShowFilter(false);
-            setShowExport(false);
-          }}
-        />
-      )}
       <div className={styles["application-status__card"]}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
           <div>
             <h2 className={styles["application-status__title"]}>Application Status</h2>
             <p className={styles["application-status__subtitle"]}>
-              Access and manage comprehensive student details seamlessly. View
-              personalized profiles tailored to your campus.
+              Sale and confirm or view the status of all applications.
             </p>
           </div>
           <div style={{ 

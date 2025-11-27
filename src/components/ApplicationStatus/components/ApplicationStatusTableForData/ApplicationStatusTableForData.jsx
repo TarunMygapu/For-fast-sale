@@ -1,6 +1,6 @@
 import React from "react";
-import ApplicationStatusDataTable from "../../widgets/ApplicationStatusDataTable/ApplicationStatusDataTable";
-import styles from "./ApplicationStatusTable.module.css";
+import ApplicationStatusDataTable from "../../../../widgets/ApplicationStatusDataTable/ApplicationStatusDataTable";
+import styles from "./ApplicationStatusTableForData.module.css";
 
 const ApplicationStatusTable = ({
   columns,

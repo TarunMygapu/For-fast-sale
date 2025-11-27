@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import GenericNavTabs from "../../widgets/GenericNavTab/GenericNavTabs";
-import ApplicationStatus from "../../components/ApplicationStatus/ApplicationStatus";
+import ApplicationStatus from "../../components/ApplicationStatus/components/ApplicationStatusToSetCategory/ApplicationStatusToSetCategory";
 import ApplicationSaleFormForSchool from "../../components/ApplicationSaleFormForSchool/ApplicationSaleFormForSchool";
 import styles from "./MainContainer.module.css";
 
@@ -16,7 +16,9 @@ const MainContainer = () => {
 
     return (
         <div className={styles.main_container}>
-            <GenericNavTabs tabs={tabs} />
+            <div className={styles.nav_tabs_wrapper}>
+                <GenericNavTabs tabs={tabs} />
+            </div>
             <Routes>
                 <Route path="/" element={<div>Default content</div>} />
                 <Route path="/analytics" element={<div>Analytics content</div>} />

@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from '../ApplicationStatus.module.css';
+import styles from './ApplicationStatusToSetCategory/ApplicationStatusToSetCategory.module.css';
 import searchIcon from '../../../assets/application-status/Group.svg';
 import filterIcon from '../../../assets/application-status/Filter.svg';
 import appliedFilterIcon from '../../../assets/application-status/Vector.svg';
 import exportIcon from '../../../assets/application-status/Arrow up.svg';
-import FilterPanel from '../../FilterButton/FilterPanel';
-import FileExport from '../../ExportButton/FileExport';
+import FilterPanel from './FilterButton/FilterPanel';
+import FileExport from './ExportButton/FileExport';
 
 const ApplicationStatusHeader = ({
   search,

@@ -88,7 +88,7 @@ const FilterPanel = ({
             { key: "all", label: "All" },
             { key: "sold", label: "Sold" },
             { key: "confirmed", label: "Confirmed" },
-            { key: "unsold", label: "Unsold" },
+            { key: "unsold", label: "Fast Sold" },
             { key: "withPro", label: "With PRO" },
             { key: "damaged", label: "Damaged" },
           ].map(({ key, label }) => (
@@ -115,4 +115,4 @@ const FilterPanel = ({
 };
  
 export default FilterPanel;
- 
+

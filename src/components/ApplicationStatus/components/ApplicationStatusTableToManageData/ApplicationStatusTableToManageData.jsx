@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
-import ApplicationStatusTable from '../ApplicationStatusTable/ApplicationStatusTable';
-import styles from '../../widgets/ApplicationStatusDataTable/ApplicationStatusDataTable.module.css';
-import './Application_sale_with_table.css';
+import ApplicationStatusTable from '../ApplicationStatusTableForData/ApplicationStatusTableForData';
+import styles from '../../../../widgets/ApplicationStatusDataTable/ApplicationStatusDataTable.module.css';
+import './ApplicationStatusTableToManageData.module.css';
 
 // Normalize status to a standard key
 const normalizeStatus = (status) => {
@@ -13,8 +13,6 @@ const normalizeStatus = (status) => {
         case 'sold':
         case 'not confirmed':
             return 'sold';
-        case 'unsold':
-            return 'unsold';
         case 'with pro':
         case 'withpro':
         case 'with_pro':
@@ -23,14 +21,13 @@ const normalizeStatus = (status) => {
         case 'damaged':
         case 'broken':
             return 'damaged';
-        case 'payment pending':
-        case 'paymentpending':
-        case 'payment_pending':
-            return 'paymentpending';
         case 'fast sale':
         case 'fastsale':
         case 'fast_sale':
-            return 'fastsale';
+        case 'fast sold':
+        case 'fastsold':
+        case 'fast_sold':
+            return 'fastsold';
         case 'confirmed':
         case 'approved':
             return 'confirmed';
@@ -45,10 +42,6 @@ const statusConfig = {
         cssClass: styles.sold,
         displayStatus: 'Sold'
     },
-    unsold: {
-        cssClass: styles.unsold,
-        displayStatus: 'Unsold'
-    },
     withpro: {
         cssClass: styles.withpro,
         displayStatus: 'With PRO'
@@ -57,13 +50,9 @@ const statusConfig = {
         cssClass: styles.damaged,
         displayStatus: 'Damaged'
     },
-    paymentpending: {
-        cssClass: styles.paymentpending,
-        displayStatus: 'Payment Pending'
-    },
-    fastsale: {
-        cssClass: styles.fastsale,
-        displayStatus: 'Fast Sale'
+    fastsold: {
+        cssClass: styles.fastsold,
+        displayStatus: 'Fast Sold'
     },
     confirmed: {
         cssClass: styles.confirmed,
@@ -98,7 +87,7 @@ const formatDate = (date) => {
     return `${day},${month} ${year}`;
 };
 
-const Application_sale_with_table = ({ 
+const ApplicationStatusTableToManageData = ({ 
     studentCategory, 
     selectedCampus, 
     pageIndex: externalPageIndex,
@@ -145,23 +134,23 @@ const Application_sale_with_table = ({
         },
     ];
 
-    // Sample data
-    const allData = [
-        { applicationNo: "APP001", pro: "PRO1", campus: "Campus A", dgm: "DGM1", zone: "Zone 1", date: new Date(2025, 7, 14), status: "Available", isSelected: false },
+    // Sample data - converted to state so checkbox selection can be updated
+    const [allData, setAllData] = useState([
+        { applicationNo: "APP001", pro: "PRO1", campus: "Campus A", dgm: "DGM1", zone: "Zone 1", date: new Date(2025, 7, 14), status: "With PRO", isSelected: false },
         { applicationNo: "APP002", pro: "PRO2", campus: "Campus B", dgm: "DGM2", zone: "Zone 2", date: new Date(2025, 7, 15), status: "Sold", isSelected: false },
-        { applicationNo: "APP003", pro: "PRO3", campus: "Campus C", dgm: "DGM3", zone: "Zone 3", date: new Date(2025, 7, 16), status: "Unsold", isSelected: false },
-        { applicationNo: "APP004", pro: "PRO4", campus: "Campus D", dgm: "DGM4", zone: "Zone 4", date: new Date(2025, 7, 17), status: "With PRO", isSelected: false },
+        { applicationNo: "APP003", pro: "PRO3", campus: "Campus C", dgm: "DGM3", zone: "Zone 3", date: new Date(2025, 7, 16), status: "Confirmed", isSelected: false },
+        { applicationNo: "APP004", pro: "PRO4", campus: "Campus D", dgm: "DGM4", zone: "Zone 4", date: new Date(2025, 7, 17), status: "Fast sold", isSelected: false },
         { applicationNo: "APP005", pro: "PRO5", campus: "Campus E", dgm: "DGM5", zone: "Zone 5", date: new Date(2025, 7, 18), status: "Damaged", isSelected: false },
-        { applicationNo: "APP006", pro: "PRO6", campus: "Campus F", dgm: "DGM6", zone: "Zone 6", date: new Date(2025, 7, 19), status: "Payment Pending", isSelected: false },
-        { applicationNo: "APP007", pro: "PRO7", campus: "Campus G", dgm: "DGM7", zone: "Zone 7", date: new Date(2025, 7, 20), status: "Fast Sale", isSelected: false },
-        { applicationNo: "APP008", pro: "PRO1", campus: "Campus A", dgm: "DGM1", zone: "Zone 1", date: new Date(2025, 7, 21), status: "Available", isSelected: false },
+        { applicationNo: "APP006", pro: "PRO6", campus: "Campus F", dgm: "DGM6", zone: "Zone 6", date: new Date(2025, 7, 19), status: "With PRO", isSelected: false },
+        { applicationNo: "APP007", pro: "PRO7", campus: "Campus G", dgm: "DGM7", zone: "Zone 7", date: new Date(2025, 7, 20), status: "Fast Sold", isSelected: false },
+        { applicationNo: "APP008", pro: "PRO1", campus: "Campus A", dgm: "DGM1", zone: "Zone 1", date: new Date(2025, 7, 21), status: "With PRO", isSelected: false },
         { applicationNo: "APP009", pro: "PRO2", campus: "Campus B", dgm: "DGM2", zone: "Zone 2", date: new Date(2025, 7, 22), status: "Sold", isSelected: false },
-        { applicationNo: "APP010", pro: "PRO3", campus: "Campus C", dgm: "DGM3", zone: "Zone 3", date: new Date(2025, 7, 23), status: "Unsold", isSelected: false },
+        { applicationNo: "APP010", pro: "PRO3", campus: "Campus C", dgm: "DGM3", zone: "Zone 3", date: new Date(2025, 7, 23), status: "Fast sold", isSelected: false },
         { applicationNo: "APP011", pro: "PRO4", campus: "Campus D", dgm: "DGM4", zone: "Zone 4", date: new Date(2025, 7, 24), status: "With PRO", isSelected: false },
         { applicationNo: "APP012", pro: "PRO5", campus: "Campus E", dgm: "DGM5", zone: "Zone 5", date: new Date(2025, 7, 25), status: "Damaged", isSelected: false },
-        { applicationNo: "APP013", pro: "PRO6", campus: "Campus F", dgm: "DGM6", zone: "Zone 6", date: new Date(2025, 7, 26), status: "Payment Pending", isSelected: false },
+        { applicationNo: "APP013", pro: "PRO6", campus: "Campus F", dgm: "DGM6", zone: "Zone 6", date: new Date(2025, 7, 26), status: "Confirmed", isSelected: false },
         { applicationNo: "APP014", pro: "PRO7", campus: "Campus G", dgm: "DGM7", zone: "Zone 7", date: new Date(2025, 7, 27), status: "Fast Sale", isSelected: false },
-    ];
+    ]);
 
     // Apply filters to data
     const data = useMemo(() => {
@@ -186,8 +175,8 @@ const Application_sale_with_table = ({
 
             if (!isAllSelected) {
                 filtered = filtered.filter((item) => {
-                    const status = item.status?.toLowerCase() || "";
-                    const normalizedStatus = status.trim();
+                    // Use normalizeStatus function to properly normalize status values
+                    const normalizedStatus = normalizeStatus(item.status);
                     
                     // Map status values to match filter categories
                     let matches = false;
@@ -202,17 +191,13 @@ const Application_sale_with_table = ({
                         matches = true;
                     }
                     
-                    // Unsold filter: "Unsold" status
-                    if (studentCategory.unsold && normalizedStatus === "unsold") {
+                    // Fast Sold filter (unsold filter maps to Fast Sold)
+                    if (studentCategory.unsold && normalizedStatus === "fastsold") {
                         matches = true;
                     }
                     
                     // With PRO filter: "With PRO", "Available" statuses
-                    if (studentCategory.withPro && (
-                        normalizedStatus === "with pro" || 
-                        normalizedStatus === "available" || 
-                        normalizedStatus === "withpro"
-                    )) {
+                    if (studentCategory.withPro && normalizedStatus === "withpro") {
                         matches = true;
                     }
                     
@@ -227,7 +212,7 @@ const Application_sale_with_table = ({
         }
 
         return filtered;
-    }, [studentCategory, selectedCampus]);
+    }, [allData, studentCategory, selectedCampus]);
 
     // Notify parent component when data changes (for search functionality)
     useEffect(() => {
@@ -242,7 +227,14 @@ const Application_sale_with_table = ({
     }, [data, onDataChange]);
 
     const handleSelectRow = (row, checked) => {
-        console.log("Row selected:", row, checked);
+        // Update the isSelected property of the row in allData
+        setAllData(prevData => 
+            prevData.map(item => 
+                item.applicationNo === row.applicationNo 
+                    ? { ...item, isSelected: checked }
+                    : item
+            )
+        );
     };
 
     const handleNavigateToSale = (row) => {
@@ -294,4 +286,4 @@ const Application_sale_with_table = ({
 
 };
 
-export default Application_sale_with_table;
+export default ApplicationStatusTableToManageData;

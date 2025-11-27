@@ -9,7 +9,7 @@
   height: 56px;
   width: 100%;
   background-color: #84b985;
-  z-index: 999;
+  z-index: 1000;
 }
 
 aside {
@@ -33,6 +33,6 @@ aside::-webkit-scrollbar {
   width: calc(100vw - 15vw);
   margin-top: 56px;
   margin-left: 15vw;
-  background-color: #fff;
+  background-color: #F6F8F9;
   padding: 10px;
 }

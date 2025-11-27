@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../ApplicationStatus.module.css';
-import Application_sale_with_table from '../../Application_sale_with_table_component/Application_sale_with_table';
+import styles from './ApplicationStatusToSetCategory/ApplicationStatusToSetCategory.module.css';
+import ApplicationStatusTableToManageData from './ApplicationStatusTableToManageData/ApplicationStatusTableToManageData';
 import SearchResultCardWithStatus from '../../SearchResultCardWithStatus/SearchResultCardWithStatus';
 
 const ApplicationStatusContent = ({
@@ -17,8 +17,8 @@ const ApplicationStatusContent = ({
   navigate,
   handleNavigateToSalePage
 }) => {
-  // If there's a search query, show search results
-  if (search) {
+  // If there's a search query with at least 3 characters, show search results
+  if (search && search.length >= 3) {
     return filteredData.length === 0 ? (
       <p className={styles["application-status__no-results"]}>
         No results found for "{search}"
@@ -35,7 +35,7 @@ const ApplicationStatusContent = ({
 
   // Always show the table when there's no search, pass filters to it
     return (
-    <Application_sale_with_table 
+    <ApplicationStatusTableToManageData 
       studentCategory={studentCategory}
       selectedCampus={selectedCampus}
       pageIndex={pageIndex}

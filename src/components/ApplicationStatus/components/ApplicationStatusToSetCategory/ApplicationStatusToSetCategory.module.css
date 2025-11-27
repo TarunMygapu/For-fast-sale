@@ -13,7 +13,7 @@
   border-radius: 12px;
   padding: 10px;
   position: relative;
-  z-index: 999; /* Lower than header and nav tabs */
+  z-index: 1; /* Lower than header and nav tabs */
 }
 
 /* ---------- Typography ---------- */
@@ -25,6 +25,10 @@
   letter-spacing: -0.352px;
   color: #252c32;
   margin-bottom: 3px;
+  margin-top: 0;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .application-status__subtitle {
@@ -57,8 +61,10 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 11px 0px 11px 13px;
+  padding: 6px 0px 6px 13px; /* Reduced from 11px to 6px for smaller height */
   width: 385px;
+  height: 36px; /* Fixed height for consistency */
+  box-sizing: border-box;
 }
 
 .application-status__search-icon {
@@ -72,6 +78,9 @@
   outline: none;
   font-size: 0.95rem;
   width: 100%;
+  height: 100%;
+  padding: 0;
+  line-height: 1.2;
 }
 
 .application-status__search input::placeholder {
@@ -173,6 +182,6 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.1);
-  z-index: 998;
+  z-index: 999; /* Below header (1000) but above content */
   pointer-events: auto;
 }
